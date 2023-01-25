@@ -14,13 +14,16 @@ public class FTManagerTestView extends javax.swing.JFrame {
     private void initComponents() {
 
         jpiBackground = new org.edisoncor.gui.panel.PanelImage();
-        jbtTests = new javax.swing.JButton();
-        jbtTests1 = new javax.swing.JButton();
-        jbtTests2 = new javax.swing.JButton();
+        jbtUpdate = new javax.swing.JButton();
+        jbtSearch = new javax.swing.JButton();
+        jbtNew = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtTests = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jtaTestText1 = new javax.swing.JTextArea();
+        jtaDetailTest = new javax.swing.JTextArea();
+        jtfSearchTest = new javax.swing.JTextField();
+        jtfNameTest = new javax.swing.JTextField();
+        jbtRegister = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -28,41 +31,41 @@ public class FTManagerTestView extends javax.swing.JFrame {
         jpiBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/bg_mtview.png"))); // NOI18N
         jpiBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jbtTests.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_update_mt_off.png"))); // NOI18N
-        jbtTests.setBorder(null);
-        jbtTests.setBorderPainted(false);
-        jbtTests.setContentAreaFilled(false);
-        jbtTests.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbtTests.setDefaultCapable(false);
-        jbtTests.setEnabled(false);
-        jbtTests.setFocusPainted(false);
-        jbtTests.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_update_mt_on.png"))); // NOI18N
-        jbtTests.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_update_mt_on.png"))); // NOI18N
-        jpiBackground.add(jbtTests, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, -1, -1));
+        jbtUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_update_mt_off.png"))); // NOI18N
+        jbtUpdate.setBorder(null);
+        jbtUpdate.setBorderPainted(false);
+        jbtUpdate.setContentAreaFilled(false);
+        jbtUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtUpdate.setDefaultCapable(false);
+        jbtUpdate.setEnabled(false);
+        jbtUpdate.setFocusPainted(false);
+        jbtUpdate.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_update_mt_on.png"))); // NOI18N
+        jbtUpdate.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_update_mt_on.png"))); // NOI18N
+        jpiBackground.add(jbtUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, -1, -1));
 
-        jbtTests1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_register_mt_off.png"))); // NOI18N
-        jbtTests1.setBorder(null);
-        jbtTests1.setBorderPainted(false);
-        jbtTests1.setContentAreaFilled(false);
-        jbtTests1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbtTests1.setDefaultCapable(false);
-        jbtTests1.setFocusPainted(false);
-        jbtTests1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_register_mt_on.png"))); // NOI18N
-        jbtTests1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_register_mt_on.png"))); // NOI18N
-        jpiBackground.add(jbtTests1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
+        jbtSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_search_mt_off.png"))); // NOI18N
+        jbtSearch.setBorder(null);
+        jbtSearch.setBorderPainted(false);
+        jbtSearch.setContentAreaFilled(false);
+        jbtSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtSearch.setDefaultCapable(false);
+        jbtSearch.setFocusPainted(false);
+        jbtSearch.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_search_mt_on.png"))); // NOI18N
+        jbtSearch.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_search_mt_on.png"))); // NOI18N
+        jpiBackground.add(jbtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, -1, -1));
 
-        jbtTests2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_new_mt_off.png"))); // NOI18N
-        jbtTests2.setBorder(null);
-        jbtTests2.setBorderPainted(false);
-        jbtTests2.setContentAreaFilled(false);
-        jbtTests2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbtTests2.setDefaultCapable(false);
-        jbtTests2.setFocusPainted(false);
-        jbtTests2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_new_mt_on.png"))); // NOI18N
-        jbtTests2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_new_mt_on.png"))); // NOI18N
-        jpiBackground.add(jbtTests2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, -1, -1));
+        jbtNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_new_mt_off.png"))); // NOI18N
+        jbtNew.setBorder(null);
+        jbtNew.setBorderPainted(false);
+        jbtNew.setContentAreaFilled(false);
+        jbtNew.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtNew.setDefaultCapable(false);
+        jbtNew.setFocusPainted(false);
+        jbtNew.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_new_mt_on.png"))); // NOI18N
+        jbtNew.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_new_mt_on.png"))); // NOI18N
+        jpiBackground.add(jbtNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtTests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -70,34 +73,49 @@ public class FTManagerTestView extends javax.swing.JFrame {
                 "ID", "NOMBRE", "F. REGISTRO", "MODIFICAR", "ELIMINAR"
             }
         ));
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        jtTests.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jtTests);
 
-        jpiBackground.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 370, 300));
+        jpiBackground.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 410, 310));
 
         jScrollPane1.getViewport().setOpaque(false);
         jScrollPane2.setBorder(null);
         jScrollPane2.setOpaque(false);
 
-        jtaTestText1.setColumns(20);
-        jtaTestText1.setForeground(new java.awt.Color(51, 51, 51));
-        jtaTestText1.setLineWrap(true);
-        jtaTestText1.setBorder(null);
-        jScrollPane2.setViewportView(jtaTestText1);
+        jtaDetailTest.setColumns(20);
+        jtaDetailTest.setForeground(new java.awt.Color(51, 51, 51));
+        jtaDetailTest.setLineWrap(true);
+        jtaDetailTest.setBorder(null);
+        jScrollPane2.setViewportView(jtaDetailTest);
 
-        jpiBackground.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 150, 278, 270));
+        jpiBackground.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 150, 270, 300));
+
+        jtfSearchTest.setBorder(null);
+        jpiBackground.add(jtfSearchTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(608, 82, 176, -1));
+
+        jtfNameTest.setBorder(null);
+        jpiBackground.add(jtfNameTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 83, 175, -1));
+
+        jbtRegister.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_register_mt_off.png"))); // NOI18N
+        jbtRegister.setBorder(null);
+        jbtRegister.setBorderPainted(false);
+        jbtRegister.setContentAreaFilled(false);
+        jbtRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtRegister.setDefaultCapable(false);
+        jbtRegister.setFocusPainted(false);
+        jbtRegister.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_register_mt_on.png"))); // NOI18N
+        jbtRegister.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_register_mt_on.png"))); // NOI18N
+        jpiBackground.add(jbtRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jpiBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 868, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jpiBackground, javax.swing.GroupLayout.DEFAULT_SIZE, 917, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpiBackground, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+            .addComponent(jpiBackground, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
         );
 
         pack();
@@ -107,11 +125,14 @@ public class FTManagerTestView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    public javax.swing.JButton jbtTests;
-    public javax.swing.JButton jbtTests1;
-    public javax.swing.JButton jbtTests2;
+    public javax.swing.JButton jbtNew;
+    public javax.swing.JButton jbtRegister;
+    public javax.swing.JButton jbtSearch;
+    public javax.swing.JButton jbtUpdate;
     private org.edisoncor.gui.panel.PanelImage jpiBackground;
-    public javax.swing.JTextArea jtaTestText1;
+    public javax.swing.JTable jtTests;
+    public javax.swing.JTextArea jtaDetailTest;
+    public javax.swing.JTextField jtfNameTest;
+    public javax.swing.JTextField jtfSearchTest;
     // End of variables declaration//GEN-END:variables
 }
