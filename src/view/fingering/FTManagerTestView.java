@@ -70,7 +70,7 @@ public class FTManagerTestView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "NOMBRE", "F. REGISTRO", "MODIFICAR", "ELIMINAR"
+                "ID", "NOMBRE", "F. ACTUALIZACIÓN", "MODIFICAR", "ELIMINAR"
             }
         ));
         jtTests.getTableHeader().setReorderingAllowed(false);

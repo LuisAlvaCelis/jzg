@@ -35,6 +35,7 @@ public class DAOValidatedEmails implements IValidatedEmails{
             if(result>0){
                 status=true;
             }
+            ps.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }finally{

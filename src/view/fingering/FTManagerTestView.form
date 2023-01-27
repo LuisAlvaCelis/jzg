@@ -157,7 +157,7 @@
                   <Table columnCount="5" rowCount="0">
                     <Column editable="true" title="ID" type="java.lang.Object"/>
                     <Column editable="true" title="NOMBRE" type="java.lang.Object"/>
-                    <Column editable="true" title="F. REGISTRO" type="java.lang.Object"/>
+                    <Column editable="true" title="F. ACTUALIZACI&#xd3;N" type="java.lang.Object"/>
                     <Column editable="true" title="MODIFICAR" type="java.lang.Object"/>
                     <Column editable="true" title="ELIMINAR" type="java.lang.Object"/>
                   </Table>

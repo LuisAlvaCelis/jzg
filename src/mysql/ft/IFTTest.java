@@ -7,6 +7,7 @@ public interface IFTTest {
     
     public boolean insert();
     public boolean update();
+    public boolean delete();
     public ArrayList<FTTestModel> select();
     public FTTestModel selectSpecificID(int id);
     public FTTestModel selectSpecificName(String name);

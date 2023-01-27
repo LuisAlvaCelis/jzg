@@ -1,13 +1,17 @@
 package mysql.ft;
 
+import addons.ExtraCode;
 import java.sql.*;
 import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import model.ft.FTTestModel;
 import mysql.ConnectionMySQL;
 
 public class DAOTest implements IFTTest{
     
-    private ConnectionMySQL connection;
+    private final ConnectionMySQL connection;
     public FTTestModel model;
     
     public DAOTest(FTTestModel model){
@@ -36,6 +40,7 @@ public class DAOTest implements IFTTest{
             if(result>0){
                 status=true;
             }
+            ps.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }finally{
@@ -69,7 +74,7 @@ public class DAOTest implements IFTTest{
     @Override
     public ArrayList<FTTestModel> select() {
         ArrayList<FTTestModel> list=new ArrayList<>();
-        String url="SELECT * FROM email_test_account";
+        String url="SELECT * FROM fingering_test";
         try (Statement statement = connection.openConnnection().createStatement(); ResultSet rs = statement.executeQuery(url)) {
             while(rs.next()){
                 list.add(new FTTestModel(rs.getInt(1), rs.getString(2),rs.getString(3), rs.getTimestamp(4), rs.getTimestamp(5)));
@@ -86,12 +91,81 @@ public class DAOTest implements IFTTest{
 
     @Override
     public FTTestModel selectSpecificID(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        FTTestModel aux=new FTTestModel();
+        String url="SELECT * FROM fingering_test WHERE id="+id;
+        try (Statement statement = connection.openConnnection().createStatement(); ResultSet rs = statement.executeQuery(url)) {
+            if(rs.next()){
+                aux=new FTTestModel(rs.getInt(1), rs.getString(2),rs.getString(3), rs.getTimestamp(4), rs.getTimestamp(5));
+            }
+            rs.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            this.connection.closeConnection();
+        }
+        return aux;
     }
 
     @Override
     public FTTestModel selectSpecificName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        FTTestModel aux=new FTTestModel();
+        String url="SELECT * FROM fingering_test WHERE name='"+name+"'";
+        try (Statement statement = connection.openConnnection().createStatement(); ResultSet rs = statement.executeQuery(url)) {
+            if(rs.next()){
+                aux=new FTTestModel(rs.getInt(1), rs.getString(2),rs.getString(3), rs.getTimestamp(4), rs.getTimestamp(5));
+            }
+            rs.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            this.connection.closeConnection();
+        }
+        return aux;
     }
     
+    @Override
+    public boolean delete() {
+        boolean status=false;
+        String url="DELETE FROM fingering_test WHERE id=?";
+        try (PreparedStatement ps = connection.openConnnection().prepareStatement(url)) {
+            ps.setInt(1, model.getId());
+            int result=ps.executeUpdate();
+            if(result>0){
+                status=true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            this.connection.closeConnection();
+        }
+        return status;
+    }
+    
+    public void writeTable(JTable table,String search){
+        Object[] rows=new Object[table.getModel().getColumnCount()];
+        DefaultTableModel dtm=ExtraCode.getDefaultTableModel(table);
+        JButton btnDelete=new JButton("Eliminar");
+        JButton btnUpdate=new JButton("Modificar");
+        for(FTTestModel aux:select()){
+            if(search==null){
+                rows[0]=aux.getId();
+                rows[1]=aux.getName();
+                rows[2]=(aux.getUpdateDate()!=null)?ExtraCode.convertDateFormat(aux.getUpdateDate(), "dd/MM/yyyy hh:mm:ss aa"):"No se detecta actualización";
+                rows[3]=btnUpdate;
+                rows[4]=btnDelete;
+                dtm.addRow(rows);
+            }else if(aux.getName().contains(search)){
+                rows[0]=aux.getId();
+                rows[1]=aux.getName();
+                rows[2]=(aux.getUpdateDate()!=null)?ExtraCode.convertDateFormat(aux.getUpdateDate(), "dd/MM/yyyy hh:mm:ss aa"):"No se detecta actualización";
+                rows[3]=btnUpdate;
+                rows[4]=btnDelete;
+                dtm.addRow(rows);
+            }
+        }
+        dtm.fireTableStructureChanged();
+        table.setModel(dtm);
+    }
 }
