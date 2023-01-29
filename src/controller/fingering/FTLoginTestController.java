@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import model.ft.FTPersonalModel;
 import mysql.ft.DAOPersonalTest;
 import mysql.ft.DAOTest;
@@ -57,12 +58,26 @@ public class FTLoginTestController extends FTLoginTestView implements ActionList
         String name=jtfName.getText();
         if(!dni.isEmpty()){
             if(!name.isEmpty()){
-                FTPersonalModel model=new FTPersonalModel(0, dni, name, ExtraCode.getCurrentDate(), null);
-                this.dao.setModel(model);
-                if(dao.insert()){
-                    
+                ArrayList<FTPersonalModel> aux=dao.select();
+                if(aux.isEmpty()){
+                    FTPersonalModel model=new FTPersonalModel(1, dni, name, ExtraCode.getCurrentDate(), null);
+                    this.dao.setModel(model);
+                    if(dao.insert()){
+                        FTStartTimeController.getInstance().start(3, model);
+                        this.dispose();
+                    }else{
+                        ExtraCode.sendMessageError("Error: No se pudo iniciar la prueba, vuelva a intentarlo.\n o comuníquese con el desarrollador del programa.");
+                    }
                 }else{
-                    ExtraCode.sendMessageError("Error: No se pudo iniciar la prueba, vuelva a intentarlo.\n o comuníquese con el desarrollador del programa.");
+                    int current=aux.get(aux.size()-1).getId();
+                    FTPersonalModel model=new FTPersonalModel(current+1, dni, name, ExtraCode.getCurrentDate(), null);
+                    this.dao.setModel(model);
+                    if(dao.insert()){
+                        FTStartTimeController.getInstance().start(3, model);
+                        this.dispose();
+                    }else{
+                        ExtraCode.sendMessageError("Error: No se pudo iniciar la prueba, vuelva a intentarlo.\n o comuníquese con el desarrollador del programa.");
+                    }
                 }
             }else{
                 ExtraCode.sendMessageError("Error: Nombre no ingresado, vuelva a intentarlo.");

@@ -17,9 +17,11 @@ public class FTTestView extends javax.swing.JFrame {
         jbtCancel = new javax.swing.JButton();
         jbtNext = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtaTestText1 = new javax.swing.JTextArea();
+        jtaPreview = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jtaInputText1 = new javax.swing.JTextArea();
+        jtaResult = new javax.swing.JTextArea();
+        jlNameTest = new javax.swing.JLabel();
+        jlTime = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -50,25 +52,34 @@ public class FTTestView extends javax.swing.JFrame {
         jScrollPane1.getViewport().setOpaque(false);
         jScrollPane1.setOpaque(false);
 
-        jtaTestText1.setEditable(false);
-        jtaTestText1.setColumns(20);
-        jtaTestText1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jtaTestText1.setLineWrap(true);
-        jtaTestText1.setFocusable(false);
-        jtaTestText1.setOpaque(false);
-        jScrollPane1.setViewportView(jtaTestText1);
+        jtaPreview.setEditable(false);
+        jtaPreview.setColumns(20);
+        jtaPreview.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jtaPreview.setLineWrap(true);
+        jtaPreview.setFocusable(false);
+        jtaPreview.setOpaque(false);
+        jScrollPane1.setViewportView(jtaPreview);
 
         piBackground.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 140, 308, 262));
 
         jScrollPane5.setOpaque(false);
 
-        jtaInputText1.setTransferHandler(null);
-        jtaInputText1.setColumns(20);
-        jtaInputText1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jtaInputText1.setLineWrap(true);
-        jScrollPane5.setViewportView(jtaInputText1);
+        jtaResult.setTransferHandler(null);
+        jtaResult.setColumns(20);
+        jtaResult.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jtaResult.setLineWrap(true);
+        jScrollPane5.setViewportView(jtaResult);
 
         piBackground.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(403, 140, 308, 262));
+
+        jlNameTest.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jlNameTest.setForeground(new java.awt.Color(118, 118, 118));
+        piBackground.add(jlNameTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 28, -1, -1));
+
+        jlTime.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jlTime.setForeground(new java.awt.Color(118, 118, 118));
+        jlTime.setText("Tiempo restante: 00:00:00");
+        piBackground.add(jlTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,8 +105,10 @@ public class FTTestView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     public javax.swing.JButton jbtCancel;
     public javax.swing.JButton jbtNext;
-    public javax.swing.JTextArea jtaInputText1;
-    public javax.swing.JTextArea jtaTestText1;
+    public javax.swing.JLabel jlNameTest;
+    public javax.swing.JLabel jlTime;
+    public javax.swing.JTextArea jtaPreview;
+    public javax.swing.JTextArea jtaResult;
     private org.edisoncor.gui.panel.PanelImage piBackground;
     // End of variables declaration//GEN-END:variables
 }

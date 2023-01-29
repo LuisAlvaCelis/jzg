@@ -24,6 +24,8 @@ public class FTManagerTestView extends javax.swing.JFrame {
         jtfSearchTest = new javax.swing.JTextField();
         jtfNameTest = new javax.swing.JTextField();
         jbtRegister = new javax.swing.JButton();
+        jsMinutes = new javax.swing.JSpinner();
+        jsSeconds = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -41,7 +43,7 @@ public class FTManagerTestView extends javax.swing.JFrame {
         jbtUpdate.setFocusPainted(false);
         jbtUpdate.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_update_mt_on.png"))); // NOI18N
         jbtUpdate.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_update_mt_on.png"))); // NOI18N
-        jpiBackground.add(jbtUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, -1, -1));
+        jpiBackground.add(jbtUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, -1, -1));
 
         jbtSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_search_mt_off.png"))); // NOI18N
         jbtSearch.setBorder(null);
@@ -63,7 +65,7 @@ public class FTManagerTestView extends javax.swing.JFrame {
         jbtNew.setFocusPainted(false);
         jbtNew.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_new_mt_on.png"))); // NOI18N
         jbtNew.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_new_mt_on.png"))); // NOI18N
-        jpiBackground.add(jbtNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, -1, -1));
+        jpiBackground.add(jbtNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, -1, -1));
 
         jtTests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -105,7 +107,13 @@ public class FTManagerTestView extends javax.swing.JFrame {
         jbtRegister.setFocusPainted(false);
         jbtRegister.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_register_mt_on.png"))); // NOI18N
         jbtRegister.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_register_mt_on.png"))); // NOI18N
-        jpiBackground.add(jbtRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, -1, -1));
+        jpiBackground.add(jbtRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, -1, -1));
+
+        jsMinutes.setBorder(javax.swing.BorderFactory.createTitledBorder("Minutos"));
+        jpiBackground.add(jsMinutes, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 100, -1));
+
+        jsSeconds.setBorder(javax.swing.BorderFactory.createTitledBorder("Segundos"));
+        jpiBackground.add(jsSeconds, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 100, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,6 +138,8 @@ public class FTManagerTestView extends javax.swing.JFrame {
     public javax.swing.JButton jbtSearch;
     public javax.swing.JButton jbtUpdate;
     private org.edisoncor.gui.panel.PanelImage jpiBackground;
+    public javax.swing.JSpinner jsMinutes;
+    public javax.swing.JSpinner jsSeconds;
     public javax.swing.JTable jtTests;
     public javax.swing.JTextArea jtaDetailTest;
     public javax.swing.JTextField jtfNameTest;

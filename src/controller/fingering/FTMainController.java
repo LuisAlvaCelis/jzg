@@ -1,10 +1,12 @@
 package controller.fingering;
 
+import addons.ExtraCode;
 import controller.MainController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import mysql.ft.DAOTest;
 import view.fingering.FTMainView;
 
 public class FTMainController extends FTMainView implements ActionListener{
@@ -56,7 +58,12 @@ public class FTMainController extends FTMainView implements ActionListener{
     }
     
     private void btnStartTest(){
-        FTLoginTestController.getIntance();
-        this.dispose();
+        DAOTest dao=new DAOTest();
+        if(!dao.select().isEmpty()){
+            FTLoginTestController.getIntance();
+            this.dispose();
+        }else{
+            ExtraCode.sendMessageError("Error: No hay pruebas disponibles.");
+        }
     }
 }

@@ -8,6 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -17,6 +18,10 @@ import static org.apache.poi.ss.usermodel.CellType.NUMERIC;
 import static org.apache.poi.ss.usermodel.CellType.STRING;
 
 public class ExtraCode {
+    
+    public static void printTime(int count_hours,int count_minutes,int count_seconds,JLabel label){
+        label.setText("Tiempo restante: "+(count_hours>9?count_hours:"0"+count_hours)+":"+(count_minutes>9?count_minutes:"0"+count_minutes)+":"+(count_seconds>9?count_seconds:"0"+count_seconds));
+    }
     
     public static boolean deleteFile(String path){
         File file=new File(path);
@@ -110,5 +115,45 @@ public class ExtraCode {
     
     public static int sendMessageConfirm(String msg){
         return JOptionPane.showConfirmDialog(null, msg, "Confirmar", 0, 0, new ImageIcon(new ExtraCode().getClass().getResource("/images/archivos32x32.png")));
+    }
+    
+    public static double similarity(String s1, String s2) {
+        String longer = s1, shorter = s2;
+        if (s1.length() < s2.length()) {
+            longer = s2;
+            shorter = s1;
+        }
+        int longerLength = longer.length();
+        if (longerLength == 0) {
+            return 1.0;
+        }
+        return (longerLength - editDistance(longer, shorter)) / (double) longerLength;
+    }
+
+    public static int editDistance(String s1, String s2) {
+        s1 = s1.toLowerCase();
+        s2 = s2.toLowerCase();
+        int[] costs = new int[s2.length() + 1];
+        for (int i = 0; i <= s1.length(); i++) {
+            int lastValue = i;
+            for (int j = 0; j <= s2.length(); j++) {
+                if (i == 0) {
+                    costs[j] = j;
+                } else {
+                    if (j > 0) {
+                        int newValue = costs[j - 1];
+                        if (s1.charAt(i - 1) != s2.charAt(j - 1)) {
+                            newValue = Math.min(Math.min(newValue, lastValue), costs[j]) + 1;
+                        }
+                        costs[j - 1] = lastValue;
+                        lastValue = newValue;
+                    }
+                }
+            }
+            if (i > 0) {
+                costs[s2.length()] = lastValue;
+            }
+        }
+        return costs[s2.length()];
     }
 }

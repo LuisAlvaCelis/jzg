@@ -109,6 +109,8 @@ public class FTManagerTestController extends FTManagerTestView implements Action
                     this.jtfNameTest.setText(aux.getName());
                     this.jtfNameTest.setName(String.valueOf(id));
                     this.jtaDetailTest.setText(aux.getDetails());
+                    this.jsMinutes.setValue(aux.getMinutes());
+                    this.jsSeconds.setValue(aux.getSeconds());
                     this.statusButtons(false, true);
                 }
             }
@@ -130,7 +132,7 @@ public class FTManagerTestController extends FTManagerTestView implements Action
         if(id!=0){
             if(!name.isEmpty()){
                 if(!details.isEmpty()){
-                    FTTestModel ftmodel=new FTTestModel(id, name, details, null,ExtraCode.getCurrentDate());
+                    FTTestModel ftmodel=new FTTestModel(id, name, details, null,ExtraCode.getCurrentDate(),Integer.parseInt(jsMinutes.getValue().toString()),Integer.parseInt(jsSeconds.getValue().toString()));
                     this.dao.setModel(ftmodel);
                     if(dao.update()){
                         ExtraCode.sendMessageSuccessful("Prueba actualizada con éxito.");
@@ -160,7 +162,7 @@ public class FTManagerTestController extends FTManagerTestView implements Action
         String details=jtaDetailTest.getText();
         if(!name.isEmpty()){
             if(!details.isEmpty()){
-                FTTestModel ftmodel=new FTTestModel(0, name, details, ExtraCode.getCurrentDate(),null);
+                FTTestModel ftmodel=new FTTestModel(0, name, details, ExtraCode.getCurrentDate(),null,Integer.parseInt(jsMinutes.getValue().toString()),Integer.parseInt(jsSeconds.getValue().toString()));
                 this.dao.setModel(ftmodel);
                 if(dao.insert()){
                     ExtraCode.sendMessageSuccessful("Prueba registrada con éxito.");
@@ -187,6 +189,8 @@ public class FTManagerTestController extends FTManagerTestView implements Action
         this.jtaDetailTest.setText(null);
         this.statusButtons(true, false);
         this.dao.writeTable(jtTests,null);
+        this.jsMinutes.setValue(0);
+        this.jsSeconds.setValue(0);
     }
     
     private void statusButtons(boolean register,boolean update){

@@ -30,12 +30,14 @@ public class DAOTest implements IFTTest{
     @Override
     public boolean insert() {
         boolean status=false;
-        String url="INSERT INTO fingering_test(name,details,register_date,update_date) VALUES(?,?,?,?)";
+        String url="INSERT INTO fingering_test(name,details,register_date,update_date,minutes,seconds) VALUES(?,?,?,?,?,?)";
         try (PreparedStatement ps = connection.openConnnection().prepareStatement(url)) {
             ps.setString(1, model.getName());
             ps.setString(2, model.getDetails());
             ps.setTimestamp(3, new Timestamp(model.getRegisterDate().getTime()));
             ps.setTimestamp(4, null);
+            ps.setInt(5, model.getMinutes());
+            ps.setInt(6, model.getSeconds());
             int result=ps.executeUpdate();
             if(result>0){
                 status=true;
@@ -52,12 +54,14 @@ public class DAOTest implements IFTTest{
     @Override
     public boolean update() {
         boolean status=false;
-        String url="UPDATE fingering_test SET name=?, details=?, update_date=? WHERE id=?";
+        String url="UPDATE fingering_test SET name=?, details=?, update_date=?,minutes=?,seconds=? WHERE id=?";
         try (PreparedStatement ps = connection.openConnnection().prepareStatement(url)) {
             ps.setString(1, model.getName());
             ps.setString(2, model.getDetails());
             ps.setTimestamp(3, new Timestamp(model.getUpdateDate().getTime()));
-            ps.setInt(4,model.getId());
+            ps.setInt(4, model.getMinutes());
+            ps.setInt(5, model.getSeconds());
+            ps.setInt(6,model.getId());
             int result=ps.executeUpdate();
             if(result>0){
                 status=true;
@@ -77,7 +81,7 @@ public class DAOTest implements IFTTest{
         String url="SELECT * FROM fingering_test";
         try (Statement statement = connection.openConnnection().createStatement(); ResultSet rs = statement.executeQuery(url)) {
             while(rs.next()){
-                list.add(new FTTestModel(rs.getInt(1), rs.getString(2),rs.getString(3), rs.getTimestamp(4), rs.getTimestamp(5)));
+                list.add(new FTTestModel(rs.getInt(1), rs.getString(2),rs.getString(3), rs.getTimestamp(4), rs.getTimestamp(5),rs.getInt(6),rs.getInt(7)));
             }
             rs.close();
             statement.close();
@@ -95,7 +99,7 @@ public class DAOTest implements IFTTest{
         String url="SELECT * FROM fingering_test WHERE id="+id;
         try (Statement statement = connection.openConnnection().createStatement(); ResultSet rs = statement.executeQuery(url)) {
             if(rs.next()){
-                aux=new FTTestModel(rs.getInt(1), rs.getString(2),rs.getString(3), rs.getTimestamp(4), rs.getTimestamp(5));
+                aux=new FTTestModel(rs.getInt(1), rs.getString(2),rs.getString(3), rs.getTimestamp(4), rs.getTimestamp(5),rs.getInt(6),rs.getInt(7));
             }
             rs.close();
             statement.close();
@@ -113,7 +117,7 @@ public class DAOTest implements IFTTest{
         String url="SELECT * FROM fingering_test WHERE name='"+name+"'";
         try (Statement statement = connection.openConnnection().createStatement(); ResultSet rs = statement.executeQuery(url)) {
             if(rs.next()){
-                aux=new FTTestModel(rs.getInt(1), rs.getString(2),rs.getString(3), rs.getTimestamp(4), rs.getTimestamp(5));
+                aux=new FTTestModel(rs.getInt(1), rs.getString(2),rs.getString(3), rs.getTimestamp(4), rs.getTimestamp(5),rs.getInt(6),rs.getInt(7));
             }
             rs.close();
             statement.close();
