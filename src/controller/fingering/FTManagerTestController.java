@@ -4,6 +4,8 @@ import addons.ExtraCode;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
@@ -38,6 +40,15 @@ public class FTManagerTestController extends FTManagerTestView implements Action
         this.jbtRegister.addActionListener(this);
         this.jbtSearch.addActionListener(this);
         this.jbtUpdate.addActionListener(this);
+        
+        this.jtfSearchTest.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                if(e.getKeyCode()==KeyEvent.VK_ENTER){
+                    btnSearch();
+                }
+            }
+        });
         
         this.jtTests.addMouseListener(new MouseAdapter() {
             @Override

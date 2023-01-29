@@ -56,6 +56,7 @@ public class FTMainController extends FTMainView implements ActionListener{
     }
     
     private void btnStartTest(){
-        
+        FTLoginTestController.getIntance();
+        this.dispose();
     }
 }

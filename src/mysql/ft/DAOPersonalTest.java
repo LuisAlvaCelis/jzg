@@ -1,7 +1,11 @@
 package mysql.ft;
 
+import addons.ExtraCode;
 import java.sql.*;
 import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import model.ft.FTPersonalModel;
 import mysql.ConnectionMySQL;
 
@@ -141,4 +145,25 @@ public class DAOPersonalTest implements IPersonalTest{
         return aux;
     }
     
+    public void writeTable(JTable table,String search){
+        Object[] rows=new Object[table.getModel().getColumnCount()];
+        DefaultTableModel dtm=ExtraCode.getDefaultTableModel(table);
+        JButton btn=new JButton("Ver resultados");
+        for(FTPersonalModel aux:select()){
+            if(search==null){
+                rows[0]=aux.getId();
+                rows[1]=aux.getDni();
+                rows[2]=aux.getName();
+                rows[3]=btn;
+            }else if(aux.getDni().contains(search) || aux.getName().contains(search)){
+                rows[0]=aux.getId();
+                rows[1]=aux.getDni();
+                rows[2]=aux.getName();
+                rows[3]=btn;
+            }
+            dtm.addRow(rows);
+        }
+        dtm.fireTableStructureChanged();
+        table.setModel(dtm);
+    }
 }

@@ -51,7 +51,8 @@ public class FTManagerController extends FTManagerView implements ActionListener
     }
     
     private void btnRegisterPersonal(){
-        
+        FTManagerPersonalController.getInstance();
+        this.dispose();
     }
     
     private void btnTests(){
