@@ -35,6 +35,7 @@ public class FTTestView extends javax.swing.JFrame {
         jbtCancel.setContentAreaFilled(false);
         jbtCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbtCancel.setDefaultCapable(false);
+        jbtCancel.setFocusPainted(false);
         jbtCancel.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_cancel_on.png"))); // NOI18N
         jbtCancel.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_cancel_on.png"))); // NOI18N
         piBackground.add(jbtCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 230, -1, -1));
@@ -45,11 +46,13 @@ public class FTTestView extends javax.swing.JFrame {
         jbtNext.setContentAreaFilled(false);
         jbtNext.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbtNext.setDefaultCapable(false);
+        jbtNext.setFocusPainted(false);
         jbtNext.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_next_on.png"))); // NOI18N
         jbtNext.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/btn_next_on.png"))); // NOI18N
         piBackground.add(jbtNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 190, -1, -1));
 
         jScrollPane1.getViewport().setOpaque(false);
+        jScrollPane1.setBorder(null);
         jScrollPane1.setOpaque(false);
 
         jtaPreview.setEditable(false);
@@ -62,6 +65,7 @@ public class FTTestView extends javax.swing.JFrame {
 
         piBackground.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 140, 308, 262));
 
+        jScrollPane5.setBorder(null);
         jScrollPane5.setOpaque(false);
 
         jtaResult.setTransferHandler(null);

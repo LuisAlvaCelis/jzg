@@ -21,10 +21,11 @@ public class FTTestController extends FTTestView implements ActionListener{
     private static FTTestController instance;
     private FTPersonalModel model_p;
     private FTDetailPersonalModel model_dp;
+    private FTTestModel model_t;
     private DAOTest dao_t;
     private DAODetailPersonalTest dao_dpt;
-    private Timer timer;
     private ArrayList<FTTestModel> tests;
+    private Timer timer;
     private Date timeStart;
     private int countTest;
     private int currentTest;
@@ -119,7 +120,7 @@ public class FTTestController extends FTTestView implements ActionListener{
             String preview=jtaPreview.getText();
             String details=jtaResult.getText();
             double percentage=ExtraCode.similarity(preview, details);
-            this.model_dp=new FTDetailPersonalModel(0, model_p.getId(), tests.get(currentTest-1).getId(), timeStart, ExtraCode.getCurrentDate(), percentage);
+            this.model_dp=new FTDetailPersonalModel(0, model_p.getId(), model_t.getId(), timeStart, ExtraCode.getCurrentDate(), percentage);
             this.dao_dpt.setModel(model_dp);
             if(dao_dpt.insert()){
                 ExtraCode.sendMessageSuccessful("Prueba finalizada, pasará a la próxima prueba.");
@@ -147,8 +148,9 @@ public class FTTestController extends FTTestView implements ActionListener{
     }
     
     private void restart(){
-        this.countMinutes=tests.get(currentTest-1).getMinutes();
-        this.countSeconds=tests.get(currentTest-1).getSeconds();
+        this.model_t=tests.get(currentTest-1);
+        this.countMinutes=model_t.getMinutes();
+        this.countSeconds=model_t.getSeconds();
         this.timer=new Timer(1000,this);
         this.timer.start();
         ExtraCode.printTime(0, countMinutes, countSeconds,jlTime);

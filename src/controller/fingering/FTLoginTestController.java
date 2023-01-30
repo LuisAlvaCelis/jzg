@@ -69,11 +69,10 @@ public class FTLoginTestController extends FTLoginTestView implements ActionList
                         ExtraCode.sendMessageError("Error: No se pudo iniciar la prueba, vuelva a intentarlo.\n o comuníquese con el desarrollador del programa.");
                     }
                 }else{
-                    int current=aux.get(aux.size()-1).getId();
-                    FTPersonalModel model=new FTPersonalModel(current+1, dni, name, ExtraCode.getCurrentDate(), null);
+                    FTPersonalModel model=new FTPersonalModel(0, dni, name, ExtraCode.getCurrentDate(), null);
                     this.dao.setModel(model);
                     if(dao.insert()){
-                        FTStartTimeController.getInstance().start(3, model);
+                        FTStartTimeController.getInstance().start(3, dao.getModel());
                         this.dispose();
                     }else{
                         ExtraCode.sendMessageError("Error: No se pudo iniciar la prueba, vuelva a intentarlo.\n o comuníquese con el desarrollador del programa.");

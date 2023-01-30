@@ -26,12 +26,16 @@ public class DAOPersonalTest implements IPersonalTest{
     public void setModel(FTPersonalModel model){
         this.model=model;
     }
+    
+    public FTPersonalModel getModel(){
+        return model;
+    }
 
     @Override
     public boolean insert() {
         boolean status=false;
         String url="INSERT INTO personal_ft(dni,name,time_start,time_end) VALUES(?,?,?,?)";
-        try (PreparedStatement ps = connection.openConnnection().prepareStatement(url)) {
+        try (PreparedStatement ps = connection.openConnnection().prepareStatement(url,Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, model.getDni());
             ps.setString(2, model.getName());
             ps.setTimestamp(3, new Timestamp(model.getTimeStart().getTime()));
@@ -39,6 +43,10 @@ public class DAOPersonalTest implements IPersonalTest{
             int result=ps.executeUpdate();
             if(result>0){
                 status=true;
+                ResultSet generatedKeys = ps.getGeneratedKeys();
+                if(generatedKeys.next()){
+                    this.model.setId(generatedKeys.getInt(1));
+                }
             }
             ps.close();
         } catch (SQLException e) {

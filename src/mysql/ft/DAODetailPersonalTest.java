@@ -142,5 +142,24 @@ public class DAODetailPersonalTest implements IDetailPersonalTest{
         }
         return aux;
     }
+
+    @Override
+    public boolean deleteSpecificIDPersonal(int idPersonal) {
+        boolean status=false;
+        String url="DELETE FROM details_personal_ft WHERE id_personal=?";
+        try (PreparedStatement ps = connection.openConnnection().prepareStatement(url)) {
+            ps.setInt(1, idPersonal);
+            int result=ps.executeUpdate();
+            if(result>0){
+                status=true;
+            }
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            this.connection.closeConnection();
+        }
+        return status;
+    }
     
 }

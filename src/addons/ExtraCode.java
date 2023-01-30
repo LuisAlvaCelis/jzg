@@ -2,6 +2,8 @@ package addons;
 
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -18,6 +20,26 @@ import static org.apache.poi.ss.usermodel.CellType.NUMERIC;
 import static org.apache.poi.ss.usermodel.CellType.STRING;
 
 public class ExtraCode {
+    
+    public static String toPercentage(double n){
+        DecimalFormat df=new DecimalFormat("#.##");
+        return df.format(n*100)+"%";
+    }
+    
+    public static String timeDuration(String start,String end){
+        String duration=null;
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+        try {
+            long resultat = (sdf.parse(start)).getTime()-(sdf.parse(end)).getTime();
+            long hour=(resultat%86400000)/3600000;
+            long minute=(((resultat%86400000)%3600000)/60000)*-1;
+            long second=((((resultat%86400000)%3600000)%60000)/1000)*-1;
+            duration=((hour<=9)?"0":"")+hour+":"+((minute<=9)?"0":"")+minute+":"+((second<=9)?"0":"")+second;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return duration;
+    }
     
     public static void printTime(int count_hours,int count_minutes,int count_seconds,JLabel label){
         label.setText("Tiempo restante: "+(count_hours>9?count_hours:"0"+count_hours)+":"+(count_minutes>9?count_minutes:"0"+count_minutes)+":"+(count_seconds>9?count_seconds:"0"+count_seconds));

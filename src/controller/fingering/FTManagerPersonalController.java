@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JButton;
+import model.ft.FTPersonalModel;
 import mysql.ft.DAOPersonalTest;
 import view.fingering.FTManagerPersonalView;
 
@@ -92,7 +93,12 @@ public class FTManagerPersonalController extends FTManagerPersonalView implement
             if(value instanceof JButton btn){
                 btn.doClick();
                 if(btn.getText().equalsIgnoreCase("Ver resultados")){
-                    ExtraCode.sendMessageError("Próximamente...");
+                    for(FTPersonalModel aux:dao.select()){
+                        if(aux.getId()==id){
+                            FTResultController.getInstance(aux);
+                            break;
+                        }
+                    }
                 }
             }
         }
