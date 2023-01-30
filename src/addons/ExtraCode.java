@@ -21,6 +21,15 @@ import static org.apache.poi.ss.usermodel.CellType.STRING;
 
 public class ExtraCode {
     
+    public static String sendInputPassword(String msg){
+        return (String)JOptionPane.showInputDialog(null, msg, "Contraseña", 0, new ImageIcon(new ExtraCode().getClass().getResource("/images/archivos32x32.png")), null, null);
+    }
+    
+    public static String convertTextFormat(double data){
+        DecimalFormat df=new DecimalFormat("#,###.00");
+        return df.format(data);
+    }
+    
     public static String toPercentage(double n){
         DecimalFormat df=new DecimalFormat("#.##");
         return df.format(n*100)+"%";
@@ -131,7 +140,7 @@ public class ExtraCode {
         JOptionPane.showMessageDialog(null, msg, "Error", 0, new ImageIcon(new ExtraCode().getClass().getResource("/images/error32x32.png")));
     }
     
-    public static void sendMessageSuccessful(String msg){
+    public static void sendMessageSuccessfully(String msg){
         JOptionPane.showMessageDialog(null, msg, "Éxito", 0, new ImageIcon(new ExtraCode().getClass().getResource("/images/exito32x32.png")));
     }
     

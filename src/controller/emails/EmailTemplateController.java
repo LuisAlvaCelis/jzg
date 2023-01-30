@@ -84,7 +84,7 @@ public class EmailTemplateController extends EmailTemplateView implements Action
             if(aux!=null){
                 this.dao=new DAOEmailTemplate(aux);
                 if(dao.delete()){
-                    ExtraCode.sendMessageSuccessful("Plantilla eliminada con éxito.");
+                    ExtraCode.sendMessageSuccessfully("Plantilla eliminada con éxito.");
                     this.clearInputs();
                     this.changeStatusButtons(true);
                 }else{
@@ -110,7 +110,7 @@ public class EmailTemplateController extends EmailTemplateView implements Action
                         aux.setUpdateDate(ExtraCode.getCurrentDate());
                         this.dao=new DAOEmailTemplate(aux);
                         if(dao.update()){
-                            ExtraCode.sendMessageSuccessful("Plantilla actualizada con éxito.");
+                            ExtraCode.sendMessageSuccessfully("Plantilla actualizada con éxito.");
                             this.clearInputs();
                             this.changeStatusButtons(true);
                         }else{
@@ -141,7 +141,7 @@ public class EmailTemplateController extends EmailTemplateView implements Action
                         EmailTemplateModel model=new EmailTemplateModel(0, name, subject, template, ExtraCode.getCurrentDate(), null);
                         this.dao=new DAOEmailTemplate(model);
                         if(dao.insert()){
-                            ExtraCode.sendMessageSuccessful("Plantilla registrada con éxito.");
+                            ExtraCode.sendMessageSuccessfully("Plantilla registrada con éxito.");
                             this.clearInputs();
                         }else{
                             ExtraCode.sendMessageError("Error: No se pudo registrar la plantilla, verifique su base de datos y vuelva a intentarlo.");

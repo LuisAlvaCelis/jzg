@@ -292,7 +292,7 @@ public class EmailMainController extends EmailMainView implements ActionListener
                         this.configSend.getCustomersFromPDF().remove(0);
                     }
                 }else{
-                    ExtraCode.sendMessageSuccessful("Todos los archivos fueron enviados correctamente.\nAdvertencia: Si aún verifica archivos en el directorio indicado, \nes posible que no esté el nombre del archivo en la data indicada.");
+                    ExtraCode.sendMessageSuccessfully("Todos los archivos fueron enviados correctamente.\nAdvertencia: Si aún verifica archivos en el directorio indicado, \nes posible que no esté el nombre del archivo en la data indicada.");
                     this.setStatusButtonsStart(true, false, false, false);
                     this.statusButtons(true);
                     this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
@@ -332,7 +332,7 @@ public class EmailMainController extends EmailMainView implements ActionListener
                         this.configSend.getCustomersFromPDF().remove(0);
                     }
                 }else{
-                    ExtraCode.sendMessageSuccessful("Todos los archivos fueron enviados correctamente.\nAdvertencia: Si aún verifica archivos en el directorio indicado, \nes posible que no esté el nombre del archivo en la data indicada.");
+                    ExtraCode.sendMessageSuccessfully("Todos los archivos fueron enviados correctamente.\nAdvertencia: Si aún verifica archivos en el directorio indicado, \nes posible que no esté el nombre del archivo en la data indicada.");
                     this.setStatusButtonsStart(true, false, false, false);
                     this.statusButtons(true);
                     this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));

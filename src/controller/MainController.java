@@ -3,6 +3,7 @@ package controller;
 import addons.ExtraCode;
 import controller.emails.EmailMainController;
 import controller.fingering.FTMainController;
+import controller.proposals.PMainController;
 import controller.svc.SVCMainController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,6 +33,7 @@ public class MainController extends MainView implements ActionListener{
         this.jbtEmails.addActionListener(this);
         this.jbtVerifyEmails.addActionListener(this);
         this.jbtFingeringTest.addActionListener(this);
+        this.jbtProposal.addActionListener(this);
     }
     
     private void registerObjects(){
@@ -46,6 +48,18 @@ public class MainController extends MainView implements ActionListener{
             this.btnVerifyEmails();
         }else if(jbtFingeringTest==e.getSource()){
             this.btnFingeringTest();
+        }else if(jbtProposal==e.getSource()){
+            this.btnProposal();
+        }
+    }
+    
+    private void btnProposal(){
+        ConnectionModel connection=new ConnectionModel();
+        if(connection.isStatus()){
+            PMainController.getInstance();
+            this.dispose();
+        }else{
+            ExtraCode.sendMessageError("Error: Base de datos no establecida.");
         }
     }
     

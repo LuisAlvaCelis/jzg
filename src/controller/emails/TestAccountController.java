@@ -90,7 +90,7 @@ public class TestAccountController extends TestAccountView implements ActionList
             TestAccountModel model=new TestAccountModel(0, email, ExtraCode.getCurrentDate(), null);
             this.dao=new DAOTestAccount(model);
             if(dao.insert()){
-                ExtraCode.sendMessageSuccessful("Correo de prueba guardado con éxito.");
+                ExtraCode.sendMessageSuccessfully("Correo de prueba guardado con éxito.");
                 this.jtfEmail.setText(null);
                 this.loadTable();
             }else{
@@ -113,7 +113,7 @@ public class TestAccountController extends TestAccountView implements ActionList
                     aux.setUpdateDate(ExtraCode.getCurrentDate());
                     this.dao=new DAOTestAccount(aux);
                     if(dao.update()){
-                        ExtraCode.sendMessageSuccessful("Correo de prueba actualizado con éxito.");
+                        ExtraCode.sendMessageSuccessfully("Correo de prueba actualizado con éxito.");
                         this.changeStatusButtons(true);
                         this.jtfEmail.setText(null);
                         this.loadTable();
@@ -163,7 +163,7 @@ public class TestAccountController extends TestAccountView implements ActionList
                         this.dao=new DAOTestAccount(aux);
                         if(dao.delete()){
                             this.loadTable();
-                            ExtraCode.sendMessageSuccessful("Correo de prueba eliminado con éxito.");
+                            ExtraCode.sendMessageSuccessfully("Correo de prueba eliminado con éxito.");
                         }else{
                             ExtraCode.sendMessageError("Error: No se pudo eliminar el correo de prueba, vuelva a intentarlo.");
                         }

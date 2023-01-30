@@ -73,9 +73,9 @@ public class FTResultController extends FTResultView implements ActionListener{
     private void btnDeleteTest(){
         if(ExtraCode.sendMessageConfirm("¿Segur@ que quiere eliminar los resultados?")==0){
             if(dao_dp.deleteSpecificIDPersonal(model.getId())){
-                ExtraCode.sendMessageSuccessful("Resultados eliminados");
+                ExtraCode.sendMessageSuccessfully("Resultados eliminados");
                 if(dao_p.delete()){
-                    ExtraCode.sendMessageSuccessful("Personal eliminado.");
+                    ExtraCode.sendMessageSuccessfully("Personal eliminado.");
                     this.dispose();
                 }else{
                     ExtraCode.sendMessageError("Error: No se pudo eliminar al personal.");
@@ -83,7 +83,7 @@ public class FTResultController extends FTResultView implements ActionListener{
             }else{
                 ExtraCode.sendMessageError("Error: No se pudo eliminar los resultados o no existen resultados.\nEliminado personal...");
                 if(dao_p.delete()){
-                    ExtraCode.sendMessageSuccessful("Personal eliminado.");
+                    ExtraCode.sendMessageSuccessfully("Personal eliminado.");
                     this.dispose();
                 }else{
                     ExtraCode.sendMessageError("Error: No se pudo eliminar al personal.");

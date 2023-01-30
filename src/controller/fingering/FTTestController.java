@@ -109,7 +109,7 @@ public class FTTestController extends FTTestView implements ActionListener{
             if(dao_dpt.insert()){
                 DAOPersonalTest aux=new DAOPersonalTest(model_p);
                 if(aux.update()){
-                    ExtraCode.sendMessageSuccessful("Prueba finalizada");
+                    ExtraCode.sendMessageSuccessfully("Prueba finalizada");
                     this.timer.stop();
                     FTLoginTestController.getIntance();
                     this.dispose();
@@ -123,7 +123,7 @@ public class FTTestController extends FTTestView implements ActionListener{
             this.model_dp=new FTDetailPersonalModel(0, model_p.getId(), model_t.getId(), timeStart, ExtraCode.getCurrentDate(), percentage);
             this.dao_dpt.setModel(model_dp);
             if(dao_dpt.insert()){
-                ExtraCode.sendMessageSuccessful("Prueba finalizada, pasará a la próxima prueba.");
+                ExtraCode.sendMessageSuccessfully("Prueba finalizada, pasará a la próxima prueba.");
                 this.currentTest++;
                 this.restart();
                 this.changeTest(currentTest);

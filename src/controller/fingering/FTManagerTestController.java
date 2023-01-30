@@ -100,7 +100,7 @@ public class FTManagerTestController extends FTManagerTestView implements Action
                         this.dao.setModel(dao.selectSpecificID(id));
                         if(dao.delete()){
                             this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-                            ExtraCode.sendMessageSuccessful("Prueba eliminada con éxito.");
+                            ExtraCode.sendMessageSuccessfully("Prueba eliminada con éxito.");
                             this.dao.writeTable(jtTests, null);
                         }
                     }
@@ -135,7 +135,7 @@ public class FTManagerTestController extends FTManagerTestView implements Action
                     FTTestModel ftmodel=new FTTestModel(id, name, details, null,ExtraCode.getCurrentDate(),Integer.parseInt(jsMinutes.getValue().toString()),Integer.parseInt(jsSeconds.getValue().toString()));
                     this.dao.setModel(ftmodel);
                     if(dao.update()){
-                        ExtraCode.sendMessageSuccessful("Prueba actualizada con éxito.");
+                        ExtraCode.sendMessageSuccessfully("Prueba actualizada con éxito.");
                         this.btnNew();
                         this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                     }else{
@@ -165,7 +165,7 @@ public class FTManagerTestController extends FTManagerTestView implements Action
                 FTTestModel ftmodel=new FTTestModel(0, name, details, ExtraCode.getCurrentDate(),null,Integer.parseInt(jsMinutes.getValue().toString()),Integer.parseInt(jsSeconds.getValue().toString()));
                 this.dao.setModel(ftmodel);
                 if(dao.insert()){
-                    ExtraCode.sendMessageSuccessful("Prueba registrada con éxito.");
+                    ExtraCode.sendMessageSuccessfully("Prueba registrada con éxito.");
                     this.btnNew();
                     this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                 }else{
