@@ -29,6 +29,7 @@ public class FTResultView extends javax.swing.JFrame {
         jlName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/escritura.png")).getImage());
         setResizable(false);
 
         panelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/bg_resultview.png"))); // NOI18N

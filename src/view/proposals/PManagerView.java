@@ -23,6 +23,7 @@ public class PManagerView extends javax.swing.JFrame {
         jtaConsole = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/proposals/search-1.png")).getImage());
         setResizable(false);
 
         piBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/proposals/bg_main_1.png"))); // NOI18N

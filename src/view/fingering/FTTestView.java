@@ -24,6 +24,7 @@ public class FTTestView extends javax.swing.JFrame {
         jlTime = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/escritura.png")).getImage());
         setResizable(false);
 
         piBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/bg_testview.png"))); // NOI18N

@@ -18,6 +18,7 @@ public class FTMainView extends javax.swing.JFrame {
         jbtManager = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/escritura.png")).getImage());
         setResizable(false);
 
         jpiBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/bg_mainview.png"))); // NOI18N

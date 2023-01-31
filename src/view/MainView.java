@@ -20,6 +20,7 @@ public class MainView extends javax.swing.JFrame {
         jbtProposal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/main_logo.png")).getImage());
         setResizable(false);
 
         piBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mainview/bg_main.png"))); // NOI18N

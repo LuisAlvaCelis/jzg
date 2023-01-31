@@ -19,6 +19,7 @@ public class FTLoginTestView extends javax.swing.JFrame {
         jtfDni = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/escritura.png")).getImage());
         setResizable(false);
 
         piBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/bg_logintest.png"))); // NOI18N

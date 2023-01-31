@@ -28,6 +28,7 @@ public class FTManagerTestView extends javax.swing.JFrame {
         jsSeconds = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/escritura.png")).getImage());
         setResizable(false);
 
         jpiBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/bg_mtview.png"))); // NOI18N

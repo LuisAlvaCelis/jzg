@@ -17,6 +17,7 @@ public class FTStartTimeView extends javax.swing.JFrame {
         jlSeconds = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/escritura.png")).getImage());
         setUndecorated(true);
         setResizable(false);
 

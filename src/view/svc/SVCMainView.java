@@ -24,6 +24,7 @@ public class SVCMainView extends javax.swing.JFrame {
         jlCurrent2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/svc/validacion.png")).getImage());
         setResizable(false);
 
         jpiBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/svc/bg_mainview.png"))); // NOI18N

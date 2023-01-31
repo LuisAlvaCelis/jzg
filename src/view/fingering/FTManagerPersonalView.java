@@ -20,6 +20,7 @@ public class FTManagerPersonalView extends javax.swing.JFrame {
         jtPersonal = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/escritura.png")).getImage());
         setResizable(false);
 
         piBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fingering_test/bg_mp.png"))); // NOI18N
