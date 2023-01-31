@@ -12,3 +12,4 @@ Funciones:
 Futuras funciones:
 - Sistema de almacenamiento de vauchers
 - Sistema de registro de cobranzas
+- Creación de tablas automáticas (Al finalizar por completo)
