@@ -95,6 +95,8 @@ public class FTTestController extends FTTestView implements ActionListener{
     }
     
     private void btnCancel(){
+        FTLoginTestController.getIntance();
+        this.dispose();
         this.timer.stop();
     }
     
