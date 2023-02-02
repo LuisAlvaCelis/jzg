@@ -5,6 +5,8 @@ import addons.RendererTable;
 import addons.TableModeler;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,10 +17,16 @@ import javax.swing.JTable;
 import javax.swing.table.TableModel;
 import model.vouchers.VouchersModel;
 import mysql.ConnectionMySQL;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class DAOVouchers implements IVouchers{
     
-    private ConnectionMySQL connection;
+    private final ConnectionMySQL connection;
     private VouchersModel model;
 
     public DAOVouchers(){
@@ -138,6 +146,24 @@ public class DAOVouchers implements IVouchers{
         return aux;
     }
 
+    @Override
+    public ArrayList<VouchersModel> selectWithoutImage(String search) {
+        ArrayList<VouchersModel> list=new ArrayList<>();
+        String url="SELECT * FROM vouchers WHERE CONCAT(id,' ', code,' ',customer) LIKE '%"+search+"%'";
+        try (Statement statement = connection.openConnnection().createStatement(); ResultSet rs = statement.executeQuery(url)) {
+            while(rs.next()){
+                list.add(new VouchersModel(rs.getInt(1), rs.getString(2), rs.getString(3), new ImageIcon(), rs.getTimestamp(5)));
+            }
+            rs.close();
+            statement.close();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            this.connection.closeConnection();
+        }
+        return list;
+    }
+    
     public void model(JTable table){
         table.setModel(createTableModeler());
         table.setDefaultRenderer(Object.class, new RendererTable());
@@ -205,5 +231,84 @@ public class DAOVouchers implements IVouchers{
             }
             
         };
+    }
+    
+    
+    public void export(File file) {
+        try{
+            String sql = "SELECT * FROM vouchers";
+            Statement statement = connection.openConnnection().createStatement();
+            ResultSet result = statement.executeQuery(sql);
+            
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet sheet = workbook.createSheet("Reporte de Vauchers");
+ 
+            writeHeaderLine(sheet);
+ 
+            writeDataLines(result, workbook, sheet);
+ 
+            FileOutputStream outputStream = new FileOutputStream(file);
+            workbook.write(outputStream);
+            workbook.close();
+ 
+            statement.close();
+ 
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+ 
+    private void writeHeaderLine(XSSFSheet sheet) {
+        Row headerRow = sheet.createRow(0);
+ 
+        Cell headerCell = headerRow.createCell(0);
+        headerCell.setCellValue("ID");
+ 
+        headerCell = headerRow.createCell(1);
+        headerCell.setCellValue("CODE");
+ 
+        headerCell = headerRow.createCell(2);
+        headerCell.setCellValue("CUSTOMER");
+ 
+        headerCell = headerRow.createCell(3);
+        headerCell.setCellValue("REGISTER DATE");
+    }
+ 
+    private void writeDataLines(ResultSet result, XSSFWorkbook workbook,XSSFSheet sheet) throws SQLException {
+        int rowCount = 1;
+ 
+        while (result.next()) {
+            int id = result.getInt("id");
+            String code = result.getString("code").replaceAll(" ", "").replaceAll(" ", "");
+            String customer = result.getString("customer");
+            String register_date = ExtraCode.convertDateFormat(result.getTimestamp("register_date"), "dd/MM/yyyy hh:mm:ss aa");
+ 
+            Row row = sheet.createRow(rowCount++);
+            int columnCount = 0;
+            Cell cell = row.createCell(columnCount++);
+            cell.setCellValue(id);
+ 
+            cell = row.createCell(columnCount++);
+            cell.setCellValue(code);
+ 
+            cell = row.createCell(columnCount++);
+            cell.setCellValue(customer);
+            
+            cell = row.createCell(columnCount++);
+            cell.setCellValue(register_date);
+ 
+            /*CellStyle cellStyle = workbook.createCellStyle();
+            CreationHelper creationHelper = workbook.getCreationHelper();
+            cellStyle.setDataFormat(creationHelper.createDataFormat().getFormat("yyyy-MM-dd HH:mm:ss"));
+            cell.setCellStyle(cellStyle);
+ 
+            cell.setCellValue(timestamp);
+ 
+            cell = row.createCell(columnCount++);
+            cell.setCellValue(rating);
+ 
+            cell = row.createCell(columnCount);
+            cell.setCellValue(comment);*/
+        }
     }
 }

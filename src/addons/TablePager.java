@@ -62,7 +62,6 @@ public class TablePager<T> {
         this.pagerButtons=new JPanel(new GridLayout(1,limitButtonsPager,3,3));
         this.pagerButtons.removeAll();
         panel.add(pagerButtons);
-        
         if(arrayRowsAllowed!=null){
             Integer array[]=new Integer[arrayRowsAllowed.length];
             for(int i=0;i<arrayRowsAllowed.length;i++){
@@ -70,6 +69,9 @@ public class TablePager<T> {
             }
             this.cbRowAllowed=new JComboBox<>(array);
             this.cbRowAllowed.setFocusable(false);
+            this.cbRowAllowed.addActionListener((ActionEvent e) -> {
+                cbEvent(cbRowAllowed);
+            });
             panel.add(Box.createHorizontalStrut(15));
             panel.add(new JLabel("Número de filas: "));
             panel.add(cbRowAllowed);
@@ -138,6 +140,8 @@ public class TablePager<T> {
             }
         }else{
             this.addRangeButtonsPager(pagerButtons, 1, pages);
+        }
+        if(pagerButtons.getParent()!=null){
             this.pagerButtons.getParent().validate();
             this.pagerButtons.getParent().repaint();
         }

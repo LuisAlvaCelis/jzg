@@ -25,6 +25,7 @@ public class VManagerView extends javax.swing.JFrame {
         jpPagination = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/vouchers/gift-voucher.png")).getImage());
         setResizable(false);
 
         piBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/vouchers/bg_managerview.png"))); // NOI18N
