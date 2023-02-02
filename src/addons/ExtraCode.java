@@ -136,6 +136,10 @@ public class ExtraCode {
         }
     }
     
+    public static void sendTest(String msg,ImageIcon icon){
+        JOptionPane.showMessageDialog(null, msg, "Error", 0, icon);
+    }
+    
     public static void sendMessageError(String msg){
         JOptionPane.showMessageDialog(null, msg, "Error", 0, new ImageIcon(new ExtraCode().getClass().getResource("/images/error32x32.png")));
     }

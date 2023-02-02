@@ -18,6 +18,7 @@ public class MainView extends javax.swing.JFrame {
         jbtEmails = new javax.swing.JButton();
         jbtFingeringTest = new javax.swing.JButton();
         jbtProposal = new javax.swing.JButton();
+        jbtVouchers = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/main_logo.png")).getImage());
@@ -35,7 +36,7 @@ public class MainView extends javax.swing.JFrame {
         jbtVerifyEmails.setFocusPainted(false);
         jbtVerifyEmails.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mainview/btn_verify_email_on.png"))); // NOI18N
         jbtVerifyEmails.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mainview/btn_verify_email_on.png"))); // NOI18N
-        piBackground.add(jbtVerifyEmails, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+        piBackground.add(jbtVerifyEmails, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         jbtEmails.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mainview/btn_email_off.png"))); // NOI18N
         jbtEmails.setBorder(null);
@@ -70,6 +71,17 @@ public class MainView extends javax.swing.JFrame {
         jbtProposal.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mainview/btn_proposal_on.png"))); // NOI18N
         piBackground.add(jbtProposal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
+        jbtVouchers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mainview/btn_vouches_off.png"))); // NOI18N
+        jbtVouchers.setBorder(null);
+        jbtVouchers.setBorderPainted(false);
+        jbtVouchers.setContentAreaFilled(false);
+        jbtVouchers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtVouchers.setDefaultCapable(false);
+        jbtVouchers.setFocusPainted(false);
+        jbtVouchers.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mainview/btn_vouches_on.png"))); // NOI18N
+        jbtVouchers.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mainview/btn_vouches_on.png"))); // NOI18N
+        piBackground.add(jbtVouchers, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,6 +102,7 @@ public class MainView extends javax.swing.JFrame {
     public javax.swing.JButton jbtFingeringTest;
     public javax.swing.JButton jbtProposal;
     public javax.swing.JButton jbtVerifyEmails;
+    public javax.swing.JButton jbtVouchers;
     private org.edisoncor.gui.panel.PanelImage piBackground;
     // End of variables declaration//GEN-END:variables
 }
