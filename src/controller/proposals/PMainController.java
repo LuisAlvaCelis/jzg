@@ -135,22 +135,30 @@ public class PMainController extends PMainVIew implements ActionListener{
                 this.model=dao.select(account);
                 if(model!=null){
                     if(entity.equalsIgnoreCase("ECL")){
-                        this.jtaData.setText("*Estimad@, solicitó evaluación a propuesta de pago.*\n\n*Código BT:* "+model.getCodeBT()+"\n*Cliente:* "+model.getName()+"\n*DNI:* "+model.getDni()+"\n*Capital: * S/. "+ExtraCode.convertTextFormat(model.getCapital())+"\n*Porcentaje de Descuento:* "+ExtraCode.toPercentage(model.getPercentageDscto())+"\n*Monto Campaña:* S/. "+ExtraCode.convertTextFormat(model.getCampaign())+"\n*Año de Castigo:* "+model.getYearCast());
+                        if(model.getEmp().equalsIgnoreCase("ECL")){
+                            this.jtaData.setText("*Estimad@, solicitó evaluación a propuesta de pago.*\n\n*Código BT:* "+model.getCodeBT()+"\n*Cliente:* "+model.getName()+"\n*DNI:* "+model.getDni()+"\n*Capital: * S/. "+ExtraCode.convertTextFormat(model.getCapital())+"\n*Porcentaje de Descuento:* "+ExtraCode.toPercentage(model.getPercentageDscto())+"\n*Monto Campaña:* S/. "+ExtraCode.convertTextFormat(model.getCampaign())+"\n*Año de Castigo:* "+model.getYearCast());
+                        }else{
+                            ExtraCode.sendMessageError("Error: Entidad no pertenece a lo seleccionado.");
+                        }
                     }else if(entity.equalsIgnoreCase("JZG")){
-                        String currentDate=ExtraCode.getCurrentDate("aa");
-                        if(currentDate.contains("a. m.")){
-                            this.jtaData.setText("Buenos días.\nEnvío datos del cliente, para su aprobación.\n\nCuenta BT: "+model.getCodeBT()+"\nCliente: "+model.getName()+"\nDNI: "+model.getDni()+"\nCapital: S/. "+ExtraCode.convertTextFormat(model.getCapital())+"\nPorcentaje de Descuento: "+ExtraCode.toPercentage(model.getPercentageDscto())+"\nMonto Campaña: S/. "+ExtraCode.convertTextFormat(model.getCampaign())+"\nAño Castigo: "+model.getYearCast());
-                        }else if(currentDate.contains("p. m.")){
-                            currentDate=ExtraCode.getCurrentDate("hh");
-                            if(Integer.parseInt(currentDate)==12){
-                                this.jtaData.setText("Buenas tardes.\nEnvío datos del cliente, para su aprobación.\n\nCuenta BT: "+model.getCodeBT()+"\nCliente: "+model.getName()+"\nDNI: "+model.getDni()+"\nCapital: S/. "+ExtraCode.convertTextFormat(model.getCapital())+"\nPorcentaje de Descuento: "+ExtraCode.toPercentage(model.getPercentageDscto())+"\nMonto Campaña: S/. "+ExtraCode.convertTextFormat(model.getCampaign())+"\nAño Castigo: "+model.getYearCast());
-                            }else{
-                                if((Integer.parseInt(currentDate)+12)>=19){
-                                    this.jtaData.setText("Buenas noches.\nEnvío datos del cliente, para su aprobación.\n\nCuenta BT: "+model.getCodeBT()+"\nCliente: "+model.getName()+"\nDNI: "+model.getDni()+"\nCapital: S/. "+ExtraCode.convertTextFormat(model.getCapital())+"\nPorcentaje de Descuento: "+ExtraCode.toPercentage(model.getPercentageDscto())+"\nMonto Campaña: S/. "+ExtraCode.convertTextFormat(model.getCampaign())+"\nAño Castigo: "+model.getYearCast());
-                                }else{
+                        if(model.getEmp().equalsIgnoreCase("JZG")){
+                            String currentDate=ExtraCode.getCurrentDate("aa");
+                            if(currentDate.contains("a. m.")){
+                                this.jtaData.setText("Buenos días.\nEnvío datos del cliente, para su aprobación.\n\nCuenta BT: "+model.getCodeBT()+"\nCliente: "+model.getName()+"\nDNI: "+model.getDni()+"\nCapital: S/. "+ExtraCode.convertTextFormat(model.getCapital())+"\nPorcentaje de Descuento: "+ExtraCode.toPercentage(model.getPercentageDscto())+"\nMonto Campaña: S/. "+ExtraCode.convertTextFormat(model.getCampaign())+"\nAño Castigo: "+model.getYearCast());
+                            }else if(currentDate.contains("p. m.")){
+                                currentDate=ExtraCode.getCurrentDate("hh");
+                                if(Integer.parseInt(currentDate)==12){
                                     this.jtaData.setText("Buenas tardes.\nEnvío datos del cliente, para su aprobación.\n\nCuenta BT: "+model.getCodeBT()+"\nCliente: "+model.getName()+"\nDNI: "+model.getDni()+"\nCapital: S/. "+ExtraCode.convertTextFormat(model.getCapital())+"\nPorcentaje de Descuento: "+ExtraCode.toPercentage(model.getPercentageDscto())+"\nMonto Campaña: S/. "+ExtraCode.convertTextFormat(model.getCampaign())+"\nAño Castigo: "+model.getYearCast());
+                                }else{
+                                    if((Integer.parseInt(currentDate)+12)>=19){
+                                        this.jtaData.setText("Buenas noches.\nEnvío datos del cliente, para su aprobación.\n\nCuenta BT: "+model.getCodeBT()+"\nCliente: "+model.getName()+"\nDNI: "+model.getDni()+"\nCapital: S/. "+ExtraCode.convertTextFormat(model.getCapital())+"\nPorcentaje de Descuento: "+ExtraCode.toPercentage(model.getPercentageDscto())+"\nMonto Campaña: S/. "+ExtraCode.convertTextFormat(model.getCampaign())+"\nAño Castigo: "+model.getYearCast());
+                                    }else{
+                                        this.jtaData.setText("Buenas tardes.\nEnvío datos del cliente, para su aprobación.\n\nCuenta BT: "+model.getCodeBT()+"\nCliente: "+model.getName()+"\nDNI: "+model.getDni()+"\nCapital: S/. "+ExtraCode.convertTextFormat(model.getCapital())+"\nPorcentaje de Descuento: "+ExtraCode.toPercentage(model.getPercentageDscto())+"\nMonto Campaña: S/. "+ExtraCode.convertTextFormat(model.getCampaign())+"\nAño Castigo: "+model.getYearCast());
+                                    }
                                 }
                             }
+                        }else{
+                            ExtraCode.sendMessageError("Error: Entidad no pertenece a lo seleccionado.");
                         }
                     }else{
                         ExtraCode.sendMessageError("Error: Al cliente no se le disignó una empressa, contacte con el equipo de soporte.");
