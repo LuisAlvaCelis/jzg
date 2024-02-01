@@ -1,5 +1,4 @@
-# JZG
-Sistema diseñado para la empresa JZG
+# trabajo-v1
 
 Código libre (Hasta nuevo aviso)
 
